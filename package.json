@@ -8,7 +8,9 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Shahid Hussain",
+  "author": {
+    "name": "Shahid H."
+  },
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^8.1.3",

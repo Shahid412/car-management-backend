@@ -16,9 +16,11 @@ exports.signUp = async (req, res) => {
     }
 
     const randomPassword = generateRandomPassword();
-    console.log(randomPassword);
+    // console.log('randomPassword:', randomPassword);
     const user = new User({ email, name, password: randomPassword });
+    // console.log('user:', user);
     await user.save();
+    // console.log('Creating email template...');
 
     // Send welcome email with the random password
     const subject = 'Welcome to Car Management System';
@@ -29,7 +31,9 @@ exports.signUp = async (req, res) => {
       message: 'User created successfully. A welcome email has been sent.',
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({
+      message: 'Server error: ' + error?.message ?? JSON.stringify(error),
+    });
   }
 };
 
